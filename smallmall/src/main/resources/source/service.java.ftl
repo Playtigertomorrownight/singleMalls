@@ -2,25 +2,23 @@ package ${package.Service};
 
 import ${package.Entity}.${entity};
 
-import com.smallrain.wechat.common.exception.SmallrainException;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.smallrain.wechat.common.model.QueryParam;
-import java.util.List;
+import com.smallrain.smallmall.exception.SmallrMallException;
+import com.smallrain.smallmall.model.QueryParam;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  *
  * @author ${author}
  * @since ${date}
  */
-public interface ${table.serviceName} {
+public interface ${table.serviceName} extends IService<${entity}> {
   
-  public IPage<${entity}> getList(QueryParam<${entity}> param) throws SmallrainException;
+  public IPage<${entity}> getList(QueryParam<${entity}> param) throws SmallrMallException;
   
-  public ${entity} getOne(String id) throws SmallrainException;
+  public ${entity} add(${entity} entity) throws SmallrMallException;
   
-  public ${entity} add(${entity} entity) throws SmallrainException;
+  public ${entity} update(${entity} entity) throws SmallrMallException;
   
-  public ${entity} update(${entity} entity) throws SmallrainException;
-  
-  public boolean delete(String... ids) throws SmallrainException;
+  public boolean delete(String... ids) throws SmallrMallException;
 }

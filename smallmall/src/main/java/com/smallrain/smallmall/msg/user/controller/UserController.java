@@ -1,4 +1,4 @@
-package ${package.Controller};
+package com.smallrain.smallmall.msg.user.controller;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,54 +14,55 @@ import com.smallrain.smallmall.exception.SmallrMallException;
 import com.smallrain.smallmall.model.QueryParam;
 import com.smallrain.smallmall.model.Response;
 import lombok.extern.slf4j.Slf4j;
-import ${package.Service}.${table.serviceName};
-import ${package.Entity}.${entity};
+import com.smallrain.smallmall.msg.user.service.UserService;
+import com.smallrain.smallmall.utils.ExceptionCodeUtil;
+import com.smallrain.smallmall.msg.user.entity.User;
 
 
 /**
  *
- * @author ${author}
- * @since ${date}
+ * @author wangying
+ * @since 2020-01-14
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/${table.entityPath}")
-public class ${table.controllerName} {
+@RequestMapping("/api/v1/user")
+public class UserController {
 
     @Autowired
-    public ${table.serviceName} ${table.entityPath}Service;
+    public UserService userService;
 
     @GetMapping("/list")
     public Response list(@RequestBody String query) throws SmallrMallException {
-      log.info("获取   ${entity} 列表, 参数:{}",query);
+      log.info("获取   User 列表, 参数:{}",query);
       if(StringUtils.isBlank(query)) {
         throw new SmallrMallException(ExceptionCodeUtil.EXCEPTION_CODE_PARAM_ERROR,"查询参数为空");
       }
-      QueryParam<${entity}> param = new QueryParam<>(query,${entity}.class);
-      return Response.success(${table.entityPath}Service.getList(param));
+      QueryParam<User> param = new QueryParam<>(query,User.class);
+      return Response.success(userService.getList(param));
     }
     
     @PostMapping("")
-    public Response add(@RequestBody ${entity} entity) throws SmallrMallException  {
-      log.info("添加一条 ${entity} 记录");
-      return Response.success(${table.entityPath}Service.add(entity));
+    public Response add(@RequestBody User entity) throws SmallrMallException  {
+      log.info("添加一条 User 记录");
+      return Response.success(userService.add(entity));
     }
     
     @PutMapping("")
-    public Response put(@RequestBody ${entity} entity) throws SmallrMallException  {
-      log.info("更新一条 ${entity} 记录");
-      return Response.success(${table.entityPath}Service.update(entity));
+    public Response put(@RequestBody User entity) throws SmallrMallException  {
+      log.info("更新一条 User 记录");
+      return Response.success(userService.update(entity));
     }
     
     @GetMapping("/{id}")
     public Response get(@PathVariable String id) throws SmallrMallException  {
-      log.info("根据 ID：{} 获取一条 ${entity} 记录",id);
-      return Response.success(${table.entityPath}Service.getById(id));
+      log.info("根据 ID：{} 获取一条 User 记录",id);
+      return Response.success(userService.getById(id));
     }
     
     @DeleteMapping("/{id}")
     public Response delete(@PathVariable String id) throws SmallrMallException  {
-      log.info("根据 ID：{} 删除一条 ${entity} 记录",id);
-      return Response.success(${table.entityPath}Service.delete(id));
+      log.info("根据 ID：{} 删除一条 User 记录",id);
+      return Response.success(userService.delete(id));
     }
 }

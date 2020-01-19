@@ -35,7 +35,7 @@ spring:
     # 下面为连接池的补充设置，应用到上面所有数据源中
     # 初始化大小，最小，最大
     druid:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://${DB_HOST:47.98.151.135}:${DB_PORT:3306}/${DB_NAME:single_mall}?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
       username: root
       password: ${DB_PASSWORD:root}

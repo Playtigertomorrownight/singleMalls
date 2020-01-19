@@ -25,9 +25,9 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
  */
 public class MybatisCodeGenerator {
   
-  private static final String MODEL_NAME = "";
+  private static final String MODEL_NAME = "User";
   
-  private static final String TABLES_NAME = "";   // ，分割
+  private static final String TABLES_NAME = "user";   // ，分割
 
   public static void main(String[] args) {
 
@@ -58,14 +58,14 @@ public class MybatisCodeGenerator {
     dataSourceConfig.setDbType(DbType.MYSQL);
     dataSourceConfig.setUrl("jdbc:mysql://47.98.151.135:3306/single_mall?useUnicode=true&useSSL=false&characterEncoding=utf8");
     dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
-    dataSourceConfig.setUsername("template");
-    dataSourceConfig.setPassword("123456");
+    dataSourceConfig.setUsername("root");
+    dataSourceConfig.setPassword("wy16894255");
     autoGenerator.setDataSource(dataSourceConfig);
 
     // 包配置
     PackageConfig packageConfig = new PackageConfig();
     packageConfig.setModuleName(MODEL_NAME.toLowerCase());
-    packageConfig.setParent("com.smallrain.smallmall.modelscode");
+    packageConfig.setParent("com.smallrain.smallmall.msg");
     autoGenerator.setPackageInfo(packageConfig);
 
     // 自定义配置
@@ -101,7 +101,9 @@ public class MybatisCodeGenerator {
      templateConfig.setService("/source/service.java");
                                  //  /templates/source/controller.java.ftl
      templateConfig.setController("/source/controller.java");
-
+     templateConfig.setMapper("/source/mapper.java");
+     templateConfig.setServiceImpl("/serviceImpl.java");
+     
     templateConfig.setXml(null);
     autoGenerator.setTemplate(templateConfig);
 
